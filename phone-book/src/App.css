@@ -1,8 +1,12 @@
 * {
     box-sizing: border-box;
 }
+body {
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
 .app {
   width: 375px;
+  margin: 0 auto;
 }
 
 .header {
@@ -61,4 +65,5 @@
     width: 22px;
     vertical-align: middle;
     height: 100%;
+    cursor: pointer;
 }

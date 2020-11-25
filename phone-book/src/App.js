@@ -1,5 +1,5 @@
 import React from 'react';
-// import SearchInput from './components/Header/SearchInput';
+import SearchInput from './components/Header/SearchInput';
 import ListWrap from './components/Contents/ListWrap';
 import './App.css';
 import './style/reset.css'
@@ -8,7 +8,9 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            lists: []
+            lists: [],
+            searchMode: false,
+            searchLists: []
         }
     }
     
@@ -23,6 +25,28 @@ class App extends React.Component {
         })
     }
     
+    searchOn = searchWord => {
+        this.setState({
+            searchMode: true
+        })
+        
+        //console.log(this.state.lists) // [...]
+        const totalList = this.state.lists.slice();
+        // console.log(resultList);
+        
+        const resultList = totalList.filter(list => list.name.indexOf(searchWord) > -1)
+        // console.log(resultList);
+        this.setState({
+            searchLists: resultList,
+        })
+    }
+    
+    searchOff = () => {
+        this.setState({
+            searchMode: false
+        })
+    }
+    
     componentDidMount() {
         this.getLists();
     }
@@ -30,7 +54,12 @@ class App extends React.Component {
     render() {
         return(
             <div className="app">
-                <ListWrap dataList={this.state.lists}/>
+                <SearchInput dataList={this.state.lists} searchOn={this.searchOn} searchOff={this.searchOff}/>  
+                <ListWrap 
+                    dataList={this.state.lists} 
+                    searchLists={this.state.searchLists}
+                    searchMode={this.state.searchMode}
+                />
             </div>
         )
     }

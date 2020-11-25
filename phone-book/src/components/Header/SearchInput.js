@@ -1,19 +1,30 @@
-// import React from 'react';
+import React from 'react';
 
-// class SearchInput extends React.Component {
-//     constructor(props) {
-//         super(props);
-        
-//     }
+class SearchInput extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            
+        }
+    }
     
-//     render() {
-//         return(
-//             <div>
-//                 searchInput
-//                 <input/>
-//             </div>
-//         )
-//     }
-// }
+    changeText = e => {
+        const searchWord = e.target.value;
+        if(searchWord) {
+           this.props.searchOn(searchWord);
+        }else{
+            this.props.searchOff();
+        }
+    }
+    
+    
+    render() {
+        return(
+            <div>
+                <input onChange={this.changeText}/>
+            </div>
+        )
+    }
+}
 
-// export default SearchInput;
+export default SearchInput;

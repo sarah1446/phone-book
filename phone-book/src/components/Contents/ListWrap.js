@@ -10,14 +10,19 @@ class ListWrap extends React.Component {
     render() {
         return(
             <div>
-                {
-                    this.props.dataList.map((list,key) => {
-                        return(
-                            <List list={list} key={key}/>
-                        )
-                    })
-                }
-                
+            { this.props.searchMode ? 
+                this.props.searchLists.map((list,key) => {
+                    return(
+                        <List list={list} key={key}/>
+                    )
+                })
+                :
+                this.props.dataList.map((list,key) => {
+                    return(
+                        <List list={list} key={key}/>
+                    )
+                })
+            }
             </div>
         )
     }

@@ -30,12 +30,9 @@ class App extends React.Component {
             searchMode: true
         })
         
-        //console.log(this.state.lists) // [...]
         const totalList = this.state.lists.slice();
-        // console.log(resultList);
-        
         const resultList = totalList.filter(list => list.name.indexOf(searchWord) > -1)
-        // console.log(resultList);
+        
         this.setState({
             searchLists: resultList,
         })

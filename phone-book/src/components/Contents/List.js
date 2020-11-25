@@ -24,8 +24,10 @@ class List extends React.Component {
         const { profileImage, name, phoneNumber } = this.props.list;
         return(
             <div className="list">
-                <div className="photo"><img src={profileImage} alt={name} /></div>    
-                <div>
+                <div className="photo">
+                    <img src={profileImage} alt={name} />
+                </div>    
+                <div className="info">
                     <div className="name">{name}</div>
                     <div className="number">{phoneNumber}</div>
                 </div>

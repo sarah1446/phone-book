@@ -2,24 +2,22 @@ import React from 'react';
 // import SearchInput from './components/Header/SearchInput';
 import ListWrap from './components/Contents/ListWrap';
 import './App.css';
+import './style/reset.css'
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            lists: [
-                // {
-                //     name: "정성운"
-                //     phoneNumber: "01012997235"
-                //     profileImage: "https://storage.googleapis.com/snuper-static/mock_users/1.svg"
-                // },
-            ]
+            lists: []
         }
     }
     
      getLists = async () => {
         const res = await fetch('http://localhost:4000/user/list');
         const dataList = await res.json();
+        dataList.sort((a, b) => { 
+            return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+        });
         this.setState({
             lists: dataList,
         })
@@ -31,10 +29,8 @@ class App extends React.Component {
     
     render() {
         return(
-            <div>
-                app
+            <div className="app">
                 <ListWrap dataList={this.state.lists}/>
-                
             </div>
         )
     }

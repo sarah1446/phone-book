@@ -24,10 +24,12 @@ class List extends React.Component {
         const { profileImage, name, phoneNumber } = this.props.list;
         return(
             <div className="list">
-                <img src={profileImage} alt={name} />
-                <div>{name}</div>
-                <div>{phoneNumber}</div>
-                <div onClick={this.bookMark}>
+                <div className="photo"><img src={profileImage} alt={name} /></div>    
+                <div>
+                    <div className="name">{name}</div>
+                    <div className="number">{phoneNumber}</div>
+                </div>
+                <div onClick={this.bookMark} className="bookmark">
                     {
                         this.state.bookmarkMode ?
                             <img src="https://storage.googleapis.com/snuper-static/mock_users/heart_filled.svg" alt=""/>

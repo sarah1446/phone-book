@@ -11,15 +11,15 @@ class ListWrap extends React.Component {
         return(
             <div>
             { this.props.searchMode ? 
-                this.props.searchLists.map((list,key) => {
+                this.props.searchList.map((list,key) => {
                     return(
-                        <List list={list} key={key}/>
+                        <List list={list} key={key} bookmark={this.bookmark}/>
                     )
                 })
                 :
                 this.props.dataList.map((list,key) => {
                     return(
-                        <List list={list} key={key}/>
+                        <List list={list} key={key} bookmark={this.bookmark}/>
                     )
                 })
             }

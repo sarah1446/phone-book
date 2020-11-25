@@ -22,7 +22,7 @@ class SearchInput extends React.Component {
         return(
             <div className="header">
                 <p>연락처</p>
-                <input onChange={this.changeText} placeholder="검색"/>
+                <input onChange={this.changeText} type="text" placeholder="검색"/>
             </div>
         )
     }

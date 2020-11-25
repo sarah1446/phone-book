@@ -1,5 +1,4 @@
 import React from 'react';
-
 class List extends React.Component {
     constructor(props) {
         super(props);
@@ -8,22 +7,25 @@ class List extends React.Component {
         }
     }
     
-    bookMark = () => {
+    bookMark = e => {
         if(this.state.bookmarkMode) {
             this.setState({
                 bookmarkMode: false
             })
+           
+            
         }else{
+            const listId = e.target.closest('.list');
             this.setState({
-                bookmarkMode: true
+                bookmarkMode: true,
             })
         }
     }
     
     render() {
-        const { profileImage, name, phoneNumber } = this.props.list;
+        const { profileImage, name, phoneNumber, id } = this.props.list;
         return(
-            <div className="list">
+            <div className="list" id={id}>
                 <div className="photo">
                     <img src={profileImage} alt={name} />
                 </div>    

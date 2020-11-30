@@ -16,11 +16,23 @@ class App extends React.Component {
         }
     }
     
+    
+    
+    
+    
     // 전화번호 불러옴
      getList = async () => {
         const res = await fetch('http://localhost:4000/user/list');
         const dataList = await res.json();
-        dataList.map(list => list.id = uuidv4());
+        //dataList.map(list => list.id = uuidv4());
+        const newDataList = dataList.map(list => {
+            return (
+                {
+                    ...list,
+                    id: uuidv4()
+                }
+            )
+        })
         
         dataList.sort((a, b) => { 
             return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
@@ -36,8 +48,7 @@ class App extends React.Component {
             searchMode: true
         })
         
-        const totalList = this.state.list.slice();
-        const resultList = totalList.filter(list => list.name.indexOf(searchWord) > -1)
+        const resultList = this.state.list.filter(list => list.name.indexOf(searchWord) > -1)
         
         this.setState({
             searchList: resultList,

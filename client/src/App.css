@@ -1,0 +1,67 @@
+
+body {
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+.app {
+  width: 375px;
+  margin: 0 auto;
+}
+
+.header {
+    padding: 20px 15px;
+    font-size: 23px;
+    font-weight: 600;
+}
+.header p {
+       margin-bottom: 15px;
+}
+.header input {
+    font-size: 15px; 
+    border-radius: 5px;
+    background-color: #ddd;
+    border: none;
+    width: 100%;
+    padding: 6px 6px 6px 25px;
+    background-image: url(https://storage.googleapis.com/snuper-static/mock_users/search.svg);
+    background-position: 6px 7px;
+    background-repeat: no-repeat;
+    background-size: 15px;
+}
+
+.list {
+    width: 375px;
+    padding: 0 15px 30px;
+    overflow:hidden;
+}
+.list > div {
+    float: left;
+    height: 48px;
+}
+.list .photo{
+   width: 63px;
+}
+.list .photo img{
+    width: 48px;
+}
+.list .info{
+    width: calc(100% - 99px);
+    padding: 3px 0;
+}
+.list .info .name {
+    font-size: 18px; 
+    font-weight: 600;
+    margin-bottom:10px;
+}
+.list .info .number {
+    font-size: 15px; 
+    font-weight: 400;
+}
+.list .bookmark {
+    width: 36px;
+}
+.list .bookmark img{
+    width: 22px;
+    vertical-align: middle;
+    height: 100%;
+    cursor: pointer;
+}

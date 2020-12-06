@@ -11,14 +11,9 @@ class App extends React.Component {
         super(props);
         this.state = {
             list: [],
-            searchMode: false,
             searchList: []
         }
     }
-    
-    
-    
-    
     
     // 전화번호 불러옴
      getList = async () => {
@@ -34,20 +29,17 @@ class App extends React.Component {
             )
         })
         
-        dataList.sort((a, b) => { 
+        newDataList.sort((a, b) => { 
             return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
         });
         this.setState({
-            list: dataList,
+            list: newDataList,
+            searchList: newDataList
         })
     }
     
     // 검색모드 ON
-    searchOn = searchWord => {
-        this.setState({
-            searchMode: true
-        })
-        
+    searchOn = searchWord => { 
         const resultList = this.state.list.filter(list => list.name.indexOf(searchWord) > -1)
         
         this.setState({
@@ -55,10 +47,11 @@ class App extends React.Component {
         })
     }
     
-    // 검색모드 OFF
     searchOff = () => {
-        this.setState({
-            searchMode: false
+        this.setState((prevState) => {
+            return {
+                searchList: prevState.list,
+            }
         })
     }
     
@@ -69,11 +62,12 @@ class App extends React.Component {
     render() {
         return(
             <div className="app">
-                <SearchInput dataList={this.state.list} searchOn={this.searchOn} searchOff={this.searchOff}/>  
+                <SearchInput 
+                    searchOn={this.searchOn} 
+                    searchOff={this.searchOff}
+                />  
                 <ListWrap 
-                    dataList={this.state.list} 
-                    searchList={this.state.searchList}
-                    searchMode={this.state.searchMode}
+                    dataList={this.state.searchList} 
                     bookmark={this.bookmark}
                 />
             </div>

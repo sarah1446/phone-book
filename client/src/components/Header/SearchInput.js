@@ -1,12 +1,6 @@
 import React from 'react';
 
 class SearchInput extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            
-        }
-    }
     
     changeText = e => {
         const searchWord = e.target.value;
@@ -16,7 +10,6 @@ class SearchInput extends React.Component {
             this.props.searchOff();
         }
     }
-    
     
     render() {
         return(
